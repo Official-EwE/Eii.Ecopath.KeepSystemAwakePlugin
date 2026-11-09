@@ -1,0 +1,20 @@
+<Project>
+  <Target Name="SetKeepSystemAwakePluginBuildDestination"
+          AfterTargets="ResolveReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Update="@(ReferenceCopyLocalPaths)"
+                               Condition="'%(ReferenceCopyLocalPaths.Filename)' == 'EwEKeepSystemAwakePlugin'">
+        <DestinationSubDirectory>Plugins\KeepSystemAwakePlugin\</DestinationSubDirectory>
+      </ReferenceCopyLocalPaths>
+    </ItemGroup>
+  </Target>
+  <Target Name="SetKeepSystemAwakePluginPublishDestination"
+          AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)"
+                             Condition="'%(ResolvedFileToPublish.Filename)' == 'EwEKeepSystemAwakePlugin'">
+        <RelativePath>Plugins\KeepSystemAwakePlugin\%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)</RelativePath>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>
